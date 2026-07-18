@@ -15,26 +15,53 @@ import Loader from "./Loader";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchProjects();
-  }, []);
+  }, [page]);
 
   const fetchProjects = async () => {
+    if (!hasMore) return;
+
+    setLoading(true);
+
     try {
-      const response = await fetch("http://localhost:5000/api/projects");
+      const response = await fetch(
+        `http://localhost:5000/api/projects?page=${page}&limit=6`
+      );
+
       const data = await response.json();
 
       if (data.success) {
-        setProjects(data.projects);
+        setProjects((prev) => [...prev, ...data.projects]);
+        setHasMore(data.hasMore);
       }
-    } catch (error) {
-      console.error("Error fetching projects:", error);
+    } catch (err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 300 &&
+        hasMore &&
+        !loading
+      ) {
+        setPage((prev) => prev + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, hasMore]);
 
   if (loading) {
     return (
@@ -127,6 +154,12 @@ export default function ProjectsPage() {
               </Link>
             ))}
           </div>
+
+          {loading && (
+            <div className="text-center py-10">
+              Loading more projects...
+            </div>
+          )}
 
           <div className="mt-20 border-t border-border pt-12 text-center">
             <h2 className="font-display text-3xl md:text-4xl">
