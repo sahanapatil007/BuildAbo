@@ -30,7 +30,7 @@ export default function ProjectsPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/projects?page=${page}&limit=6`
+        `${import.meta.env.VITE_API_URL}/projects?page=${page}&limit=6`
       );
 
       const data = await response.json();

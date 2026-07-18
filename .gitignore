@@ -6,6 +6,7 @@ build-abo/node_modules
 # Environment variables
 .env
 server/.env
+build-abo/.env
 
 # Build output
 build-abo/dist
