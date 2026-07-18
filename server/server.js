@@ -8,7 +8,7 @@ dotenv.config();
 
 const enquiryRoutes = require("./routes/enquiryRoutes");
 const projectRoutes = require("./routes/projectRoutes");
-const connectDB = require("./config/db");
+const connectDB = require("./Config/db");
 
 
 
