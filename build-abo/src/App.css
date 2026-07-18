@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss" ;
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-clay: var(--clay);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+}
+
+:root {
+  --radius: 4px;
+  --background: oklch(0.97 0.01 80);          /* warm cream */
+  --foreground: oklch(0.22 0.01 60);          /* charcoal */
+  --card: oklch(0.99 0.005 80);
+  --card-foreground: oklch(0.22 0.01 60);
+  --popover: oklch(0.99 0.005 80);
+  --popover-foreground: oklch(0.22 0.01 60);
+  --primary: oklch(0.22 0.01 60);             /* ink / charcoal */
+  --primary-foreground: oklch(0.97 0.01 80);
+  --secondary: oklch(0.92 0.02 75);           /* warm sand */
+  --secondary-foreground: oklch(0.22 0.01 60);
+  --muted: oklch(0.93 0.015 75);
+  --muted-foreground: oklch(0.45 0.02 60);
+  --accent: oklch(0.55 0.12 45);              /* terracotta clay */
+  --accent-foreground: oklch(0.98 0.01 80);
+  --destructive: oklch(0.55 0.20 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.85 0.02 70);
+  --input: oklch(0.88 0.015 70);
+  --ring: oklch(0.55 0.12 45);
+  --clay: oklch(0.55 0.12 45);
+  --sand: oklch(0.88 0.03 75);
+  --ink: oklch(0.22 0.01 60);
+}
+
+.dark {
+  --background: oklch(0.18 0.01 60);
+  --foreground: oklch(0.95 0.01 80);
+  --card: oklch(0.22 0.01 60);
+  --card-foreground: oklch(0.95 0.01 80);
+  --primary: oklch(0.95 0.01 80);
+  --primary-foreground: oklch(0.18 0.01 60);
+  --border: oklch(0.30 0.01 60);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+}

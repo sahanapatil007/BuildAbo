@@ -1,0 +1,12 @@
+# Dependencies
+node_modules
+server/node_modules
+build-abo/node_modules
+
+# Environment variables
+.env
+server/.env
+
+# Build output
+build-abo/dist
+dist
