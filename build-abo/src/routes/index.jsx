@@ -3,7 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import "swiper/css";
 import {
@@ -233,29 +236,10 @@ function Services() {
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     fetchProjects();
   }, []);
-
-  useEffect(() => {
-    if (projects.length === 0) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const next = prev + 4;
-
-        if (next >= projects.length) {
-          return 0;
-        }
-
-        return next;
-      });
-    }, 5 * 60 * 1000);
-
-    return () => clearInterval(interval);
-  }, [projects]);
 
   const fetchProjects = async () => {
     try {
@@ -271,8 +255,6 @@ function Projects() {
       setLoading(false);
     }
   };
-
-  const visibleProjects = projects.slice(currentIndex, currentIndex + 4);
 
   return (
     <section className="bg-secondary/30 py-28">
@@ -294,37 +276,65 @@ function Projects() {
           </Link>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {visibleProjects.map((p, i) => (
-            <Link
-              to={`/projects/${p._id}`}
-              key={p.title}
-              className={`group relative block overflow-hidden rounded-sm ${i % 3 === 0 ? "md:row-span-2" : ""
-                }`}
-            >
-              <img
-                src={p.image}
-                alt={p.title}
-                loading="lazy"
-                className="h-[420px] w-full object-cover transition duration-700 group-hover:scale-105 md:h-full"
-              />
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={30}
+          navigation
+          pagination={{ clickable: true }}
+          loop={projects.length > 3}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 25,
+            },
+            1200: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+          }}
+          className="mt-16"
+        >
+          {projects.map((p) => (
+            <SwiperSlide key={p._id}>
+              <Link
+                to={`/projects/${p._id}`}
+                className="group relative block overflow-hidden rounded-sm"
+              >
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  loading="lazy"
+                  className="h-[368px] md:h-[450px] w-full object-cover transition duration-700 group-hover:scale-105"
+                />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-7">
-                <p className="text-xs uppercase tracking-[0.22em] text-accent">
-                  {p.category}
-                </p>
+                <div className="absolute bottom-0 left-0 right-0 p-7">
+                  <p className="text-xs uppercase tracking-[0.22em] text-accent">
+                    {p.category}
+                  </p>
 
-                <h3 className="mt-2 font-display text-3xl text-background">
-                  {p.title}
-                </h3>
+                  <h3 className="mt-2 font-display text-3xl text-background">
+                    {p.title}
+                  </h3>
 
-                <p className="text-sm text-background/75">{p.location}</p>
-              </div>
-            </Link>
+                  <p className="text-sm text-background/75">
+                    {p.location}
+                  </p>
+                </div>
+              </Link>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );
@@ -415,7 +425,7 @@ function Testimonials() {
   const fetchTestimonials = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/testimonials"
+        `${import.meta.env.VITE_API_URL}/testimonials`
       );
 
       const data = await response.json();
@@ -467,7 +477,7 @@ function Testimonials() {
             {testimonials.map((item) => (
               <SwiperSlide key={item._id}>
                 <figure className="border-l border-accent/40 pl-6 h-full">
-                  <blockquote className="font-display text-2xl leading-snug">
+                  <blockquote className="font-display text-[20px] leading-snug">
                     "{item.review}"
                   </blockquote>
 
