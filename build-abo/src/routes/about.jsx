@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import  Layout  from "../Components/site/Layout";
-import craft from "../assets/about-craft.jpg";
+import craft from "../assets/about.jpg";
 
 function AboutPage() {
   const values = [
@@ -22,7 +22,7 @@ function AboutPage() {
 
   return (
     <Layout>
-      <section className="border-b border-border px-6 py-24 lg:px-10">
+      <section className="border-b border-border px-6 py-20 lg:px-7">
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-end">
           <div>
             <p className="eyebrow">Studio</p>
@@ -40,7 +40,7 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-15 lg:px-8">
         <img
           src={craft}
           alt="BuildAbo team on-site"
@@ -49,12 +49,12 @@ function AboutPage() {
         />
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
         <p className="eyebrow">What we value</p>
 
-        <div className="mt-10 grid gap-px bg-border md:grid-cols-3">
+        <div className="mt-8 grid gap-px bg-border md:grid-cols-3">
           {values.map((v) => (
-            <div key={v.t} className="bg-background p-10">
+            <div key={v.t} className="bg-background p-8">
               <h2 className="font-display text-4xl text-accent">{v.t}</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 {v.d}
@@ -64,7 +64,7 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-secondary/40 px-6 py-24 lg:px-10">
+      <section className="bg-secondary/40 px-6 py-16 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow">Our promise</p>
 

@@ -6,7 +6,7 @@ import logo from "../../assets/logo-dark.png";
 export default function Footer() {
   return (
     <footer className="mt-32 bg-primary text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-4 lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-18 md:grid-cols-4 lg:px-10">
         
         <div className="md:col-span-2">
           <img

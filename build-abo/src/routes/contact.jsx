@@ -26,7 +26,7 @@ function ContactPage() {
         <link rel="canonical" href="/contact" />
       </Helmet>
 
-      <section className="border-b border-border px-6 py-24 lg:px-10">
+      <section className="border-b border-border px-6 py-22 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="eyebrow">Contact</p>
           <h1 className="mt-4 max-w-3xl font-display text-5xl md:text-7xl">

@@ -197,7 +197,7 @@ function Services() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+    <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
       <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
         <div className="max-w-xl">
           <p className="eyebrow">What we do</p>
@@ -257,7 +257,7 @@ function Projects() {
   };
 
   return (
-    <section className="bg-secondary/30 py-28">
+    <section className="bg-secondary/30 py-18">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
@@ -364,7 +364,7 @@ function Process() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+    <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
       <div className="grid gap-16 lg:grid-cols-[1fr_2fr]">
         <div>
           <p className="eyebrow">The process</p>
@@ -441,7 +441,7 @@ function Testimonials() {
   console.log("Count:", testimonials.length);
 
   return (
-    <section className="bg-primary py-28 text-primary-foreground">
+    <section className="bg-primary py-20 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <p className="eyebrow !text-accent">Clients</p>
 
@@ -498,7 +498,7 @@ function Testimonials() {
 }
 function CTA() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+    <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
       <div className="grid gap-12 lg:grid-cols-2">
         <div>
           <p className="eyebrow">Let's talk</p>
